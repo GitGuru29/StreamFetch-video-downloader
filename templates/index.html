@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFetch | Premium Video Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header>
+            <div class="logo">
+                <ion-icon name="cloud-download-outline"></ion-icon>
+                <span>StreamFetch</span>
+            </div>
+            <p class="tagline">Download High-Quality Videos from YouTube & Facebook</p>
+        </header>
+
+        <main>
+            <form id="download-form">
+                <div class="input-group">
+                    <div class="icon-wrapper">
+                        <ion-icon name="link-outline"></ion-icon>
+                    </div>
+                    <input type="url" id="url" name="url" placeholder="Paste video URL here..." required
+                        autocomplete="off">
+                </div>
+
+                <div class="options-grid">
+                    <div class="option-item">
+                        <label for="quality">Quality</label>
+                        <div class="select-wrapper">
+                            <select id="quality" name="quality">
+                                <option value="best">Best Available</option>
+                                <option value="1080">1080p Full HD</option>
+                                <option value="720">720p HD</option>
+                                <option value="480">480p SD</option>
+                                <option value="audio">Audio Only (MP3)</option>
+                            </select>
+                            <ion-icon name="chevron-down-outline" class="select-icon"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="download-btn">
+                    <span class="btn-text">Data Fetch</span>
+                    <ion-icon name="arrow-forward-outline" class="btn-icon"></ion-icon>
+                    <div class="loader" id="btn-loader"></div>
+                </button>
+            </form>
+
+            <div id="status-container" class="status-card hidden">
+                <div class="status-header">
+                    <span class="status-title">Downloading...</span>
+                    <span id="percentage" class="status-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="status-details">
+                    <div class="detail-item">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                        <span id="status-message">Initializing...</span>
+                    </div>
+                    <div class="detail-info">
+                        <span id="speed" class="badge speed">0 MB/s</span>
+                        <span id="eta" class="badge eta">00:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-container" class="error-card hidden">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <p id="error-message"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 StreamFetch. Built for speed.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
